@@ -1,6 +1,6 @@
 <template>
     <div class="container-shadow">
-      <h1>jmj的在线考试系统</h1>
+      <h1>jmj的课程设计</h1>
     </div>
 </template>
 <style scoped>

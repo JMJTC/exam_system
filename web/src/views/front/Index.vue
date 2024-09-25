@@ -80,7 +80,8 @@ export default {
   data() {
     return {
       bannerList: [],
-      linkList: []
+      linkList: [],
+      noticeList: []
     }
   },
   created() {

@@ -12,6 +12,7 @@ public class RoleMenuUtils {
 //            new SysMenuVO("通知管理", "/noticeManage", "NoticeManage", "el-icon-chat-line-round", false, null),
             new SysMenuVO("轮播管理", "/bannerManage", "BannerManage", "el-icon-chat-line-round", false, null),
             new SysMenuVO("友链管理", "/linkManage", "LinkManage", "el-icon-chat-line-round", false, null),
+            new SysMenuVO("文章管理", "/newsManage", "NewsManage", "el-icon-chat-line-round", false, null),
             new SysMenuVO("试题管理", "/examQuestionManage", "ExamQuestionManage", "el-icon-chat-line-round", false, null),
             new SysMenuVO("考试管理", "/examManage", "ExamManage", "el-icon-chat-line-round", false, null),
             new SysMenuVO("评分管理", "/scoreManage", "ScoreManage", "el-icon-chat-line-round", false, null),
