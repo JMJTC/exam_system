@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
  * 用户信息表 Mapper 接口
  * </p>
  *
- * @author B站：程序员瑞哥
  * 
  */
 @Mapper

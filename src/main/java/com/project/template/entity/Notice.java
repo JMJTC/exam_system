@@ -16,7 +16,6 @@ import lombok.Setter;
  * 栏目表
  * </p>
  *
- * @author B站：程序员瑞哥
  *
  */
 @Getter

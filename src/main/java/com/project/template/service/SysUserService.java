@@ -12,7 +12,6 @@ import com.project.template.vo.SysUserLoginVO;
  * 用户信息表 服务类
  * </p>
  *
- * @author B站：程序员瑞哥
  * 
  */
 public interface SysUserService extends IService<SysUser> {

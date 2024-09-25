@@ -9,8 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
  *  Mapper 接口
  * </p>
  *
- * @author B站：程序员瑞哥
- * 
  */
 @Mapper
 public interface SysRoleMapper extends BaseMapper<SysRole> {

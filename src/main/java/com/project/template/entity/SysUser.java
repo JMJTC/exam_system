@@ -17,7 +17,6 @@ import java.util.Date;
  * 用户信息表
  * </p>
  *
- * @author B站：程序员瑞哥
  *
  */
 @Getter

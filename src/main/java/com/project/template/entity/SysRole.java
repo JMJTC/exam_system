@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiModelProperty;
  * 
  * </p>
  *
- * @author B站：程序员瑞哥
  * 
  */
 @TableName("sys_role")
