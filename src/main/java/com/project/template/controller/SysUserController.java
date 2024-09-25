@@ -29,8 +29,7 @@ import java.util.List;
  * 用户信息表 前端控制器
  * </p>
  *
- * @author B站：程序员瑞哥
- *
+ * @author jmjtc
  */
 @Api(value = "用户模块", tags = "用户模块")
 

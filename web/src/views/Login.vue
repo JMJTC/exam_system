@@ -99,7 +99,7 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    background: url("../assets/login.png") 100% 100%;
+    background: url("../assets/img.png") 100% 100%;
     background-size: cover;
 
 }

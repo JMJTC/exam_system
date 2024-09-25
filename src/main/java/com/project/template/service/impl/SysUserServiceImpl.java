@@ -89,30 +89,42 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Override
     public SysUserLoginVO login(UserLoginDTO userLoginDTO) {
+        //创建查询条件
         LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+        //设置查询条件，根据用户名查询用户信息
         wrapper.eq(SysUser::getUsername, userLoginDTO.getUsername())
                 .last("limit 1");
+        //根据查询条件获取用户信息
         SysUser userInfo = getOne(wrapper);
+        //如果用户信息不为空
         if (userInfo != null) {
+            //获取用户盐值
             String salt = userInfo.getSalt();
 
+            //判断用户输入的密码和数据库中的密码是否匹配
             if (!SecureUtil.md5(userLoginDTO.getPassword() + salt).equals(userInfo.getPassword())) {
+                //如果不匹配，抛出异常
                 throw new CustomException("请检查用户名密码是否正确");
             }
             //检查用户状态是否是启用
             if (!(StateType.ENABLE.toString().equals(userInfo.getState().getName()))) {
+                //如果不是启用状态，抛出异常
                 throw new CustomException("当前用户已经被禁用");
             }
             //生成jwt
             String token = JwtUtils.generateToken(userInfo);
+            //创建返回对象
             SysUserLoginVO sysUserLoginVO = new SysUserLoginVO();
+            //将用户信息复制到返回对象中
             BeanUtil.copyProperties(userInfo, sysUserLoginVO);
+            //将生成的token设置到返回对象中
             sysUserLoginVO.setToken(token);
             //生成菜单
             sysUserLoginVO.setRoleMenu(RoleMenuUtils.getRoleMenu(sysUserLoginVO.getRoleType()));
 
             return sysUserLoginVO;
         } else {
+            //如果用户信息为空，抛出异常
             throw new CustomException("请检查用户名密码是否正确");
         }
     }
@@ -152,3 +164,4 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         }
     }
 }
+

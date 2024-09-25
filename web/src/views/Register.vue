@@ -86,7 +86,7 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    background: url("../assets/register.png") 100% 100%;
+    background: url("../assets/img_1.png") 100% 100%;
     background-size: cover;
 
 }
