@@ -6,8 +6,10 @@ import com.project.template.common.PageVO;
 import com.project.template.common.Result;
 import com.project.template.entity.Exam;
 import com.project.template.entity.ExamQuestion;
+import com.project.template.entity.Score;
 import com.project.template.enums.RoleType;
 import com.project.template.service.ExamService;
+import com.project.template.service.ScoreService;
 import com.project.template.utils.UserThreadLocal;
 import com.project.template.utils.Utils;
 import io.swagger.annotations.ApiOperation;
@@ -25,6 +27,8 @@ public class ExamController {
 
     @Resource
     private ExamService examService;
+    @Resource
+    private ScoreService scoreService;
 
     @ApiOperation(value = "列表",notes = "列表")
     // 定义一个GET请求，路径为/list，返回一个Result<List<Exam>>类型的结果
@@ -69,6 +73,12 @@ public class ExamController {
 
     @DeleteMapping("/delBatch")
     public Result delBatch(@RequestBody List<Integer> ids){
+        //如果该考试有评分记录，则不能删除，需先删除评分记录，返回错误信息
+        for(Integer id:ids){
+            if(scoreService.count(new LambdaQueryWrapper<Score>().eq(Score::getExamId,id))>0) {
+                return new Result().error("该考试有评分记录，不能删除");
+            }
+        }
         examService.removeByIds(ids);
         return new Result().success();
     }

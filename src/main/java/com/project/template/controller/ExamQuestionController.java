@@ -39,15 +39,18 @@ public class ExamQuestionController {
     }
 
     @PostMapping("/add")
-//    @Validated
+    // 添加一个POST请求，路径为/add
     public Result add(@RequestBody ExamQuestion examQuestion){
+        // 接收一个ExamQuestion类型的参数
         examQuestion.setUserId(UserThreadLocal.getCurrentUser().getId());
+        // 设置当前用户的ID
         examQuestionService.save(examQuestion);
+        // 调用examQuestionService的save方法，保存examQuestion
         return new Result<>().success();
+        // 返回一个成功的Result对象
     }
 
     @PutMapping("/update")
-//    @Validated
     public Result updateById(@RequestBody ExamQuestion examQuestion){
         examQuestionService.updateById(examQuestion);
         return new Result<>().success();

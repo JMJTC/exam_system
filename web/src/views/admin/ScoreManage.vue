@@ -38,10 +38,11 @@
           <el-button type="primary" @click="score(scope.row)" icon="el-icon-edit-outline"
                      v-if="(userInfo.roleType==='USER'&&scope.row.isScore==='已评分')
                                ||
-                               (userInfo.roleType==='TEACHER')">
+                               (userInfo.roleType==='TEACHER')||(userInfo.roleType==='ADMIN')"
+          >
             {{ userInfo.roleType === 'USER' ? '查看答题情况' : '评分' }}
           </el-button>
-          <el-button @click="handleDelete(scope.row)" icon="el-icon-remove-outline" v-if="userInfo.roleType!=='USER'">删 除</el-button>
+          <el-button @click="handleDelete(scope.row)" icon="el-icon-remove-outline" v-if="(userInfo.roleType!='USER')">删 除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -250,7 +251,6 @@ export default {
       this.$refs['searchForm'].resetFields()
     },
     score(e){
-
       //根据角色跳转
       if("USER"===this.userInfo.roleType){
         this.$router.push("/front/examPaper?ids="+e.ids+"&examName="+e.name+"&type=评分&id="+e.id)

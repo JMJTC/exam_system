@@ -17,7 +17,7 @@
                   <el-menu :default-active="$route.path" class="el-menu-demo" mode="horizontal" router
                            @select="handleSelect">
                     <el-menu-item index="/front/index">首页</el-menu-item>
-                    <el-menu-item index="/front/news">最新资讯</el-menu-item>
+<!--                    <el-menu-item index="/front/news">最新资讯</el-menu-item>-->
                     <el-menu-item index="/front/exam">在线考试</el-menu-item>
                     <el-menu-item index="/front/score">我的分数</el-menu-item>
                     <el-menu-item index="/front/about">关于我们</el-menu-item>
@@ -53,7 +53,7 @@
       </div>
       <div class="container-fluid">
         <el-footer class="footer">
-          <p>版权所有，翻版必究</p>
+          <p>@数据库课设</p>
         </el-footer>
       </div>
     </el-container>

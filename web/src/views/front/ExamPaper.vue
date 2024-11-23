@@ -103,7 +103,7 @@
           <div>参考答案：{{ item.answer }}</div>
           <div>用户答案：{{ item.userAnswers }}</div>
           <el-input v-model="item.userScore" placeholder="请输入评分"
-                    :disabled="!(userInfo.roleType==='TEACHER'&&type==='评分')"></el-input>
+                    :disabled="!((userInfo.roleType==='TEACHER'||userInfo.roleType==='ADMIN')&&type==='评分')"></el-input>
 
         </div>
       </div>

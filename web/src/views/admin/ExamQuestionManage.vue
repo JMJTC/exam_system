@@ -90,22 +90,6 @@
           <el-form-item label="分值">
             <el-input v-model="formData.score" autocomplete="off"></el-input>
           </el-form-item>
-
-          <!--          <el-form-item label="轮播图">-->
-          <!--            <el-upload-->
-          <!--                style="text-align: center;padding-bottom:10px;"-->
-          <!--                :action="$httpUploadFile"-->
-          <!--                :show-file-list="false"-->
-          <!--                :on-success="uploadImgSuccess"-->
-          <!--            >-->
-          <!--              <img v-if="formData.img" :src="formData.img" alt="" style="width: 150px;height: 150px">-->
-          <!--              <i v-else class="el-icon-plus"-->
-          <!--                 style="font-size: 28px;width: 150px;height: 150px;line-height: 150px;text-align: center;border: 1px solid #ccc"> </i>-->
-          <!--            </el-upload>-->
-
-          <!--          </el-form-item>-->
-
-
         </el-form>
         <div class="demo-drawer__footer" style="display: flex;justify-content: space-around">
           <el-button @click="isDrawerDialog=false" icon="el-icon-close">取 消</el-button>

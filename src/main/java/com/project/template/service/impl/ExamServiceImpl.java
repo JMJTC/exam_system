@@ -34,7 +34,6 @@ public class ExamServiceImpl extends ServiceImpl<ExamMapper, Exam> implements Ex
     private ScoreService scoreService;
 
     // 重写page方法，根据传入的参数进行分页查询
-
     @Override
     public Page<Exam> page(Map<String, Object> query, Integer pageNum, Integer pageSize) {
         LambdaQueryWrapper<Exam> wrapper = new LambdaQueryWrapper<>();
@@ -76,7 +75,6 @@ public class ExamServiceImpl extends ServiceImpl<ExamMapper, Exam> implements Ex
             } else {
                 item.setIsExam("立即考试");
             }
-
         });
         return page;
     }

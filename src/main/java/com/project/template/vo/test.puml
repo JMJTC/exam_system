@@ -1,0 +1,33 @@
+
+
+@startuml
+entity "用户" as User {
+  * 用户ID : PK
+  * 用户名
+  * 邮箱
+  * 密码
+}
+
+entity "笔记" as Note {
+  * 笔记ID : PK
+  * 标题
+  * 内容
+  * 创建时间
+  * 修改时间
+}
+
+User "1" -- "*" Note
+@enduml
+
+@startuml
+start
+
+:增加笔记;
+:删除笔记;
+:修改笔记;
+:查询笔记;
+:按时间排序笔记;
+
+stop
+@enduml
+
