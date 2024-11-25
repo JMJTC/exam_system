@@ -1,0 +1,28 @@
+@startuml
+
+' 定义策略接口
+interface LoginStrategy {
+  + handleLoginSuccess(res: Object, router: Object)
+}
+
+' 实现具体的策略类
+class UserLoginStrategy implements LoginStrategy {
+  + handleLoginSuccess(res: Object, router: Object)
+}
+
+class AdminLoginStrategy implements LoginStrategy {
+  + handleLoginSuccess(res: Object, router: Object)
+}
+
+' Vue组件，使用策略接口
+class LoginComponent {
+  - strategy: LoginStrategy
+  + setStrategy(strategy: LoginStrategy)
+  + submitForm(formName: String)
+}
+
+' 关联关系
+LoginComponent --> LoginStrategy
+
+
+@enduml

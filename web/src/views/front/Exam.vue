@@ -11,7 +11,7 @@
           <div style="padding:5px">
             <!--disabled-->
             <el-button type="primary"
-                       :disabled="item.isExam==='已考试'||new Date(item.startTime) > new Date()"
+                       :disabled="item.isExam==='已考试'||new Date(item.endTime) < new Date()"
                        @click="$router.push(
                                        {
                                        path:'/front/examPaper?'+

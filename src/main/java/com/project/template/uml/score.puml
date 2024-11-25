@@ -1,0 +1,44 @@
+@startuml
+
+' 定义评分策略接口
+interface ScoringStrategy {
+  + calculateScore(question: Object): Number
+}
+
+' 实现具体的评分策略类
+class MultipleChoiceScoringStrategy implements ScoringStrategy {
+  + calculateScore(question: Object): Number
+}
+
+class SingleChoiceScoringStrategy implements ScoringStrategy {
+  + calculateScore(question: Object): Number
+}
+
+class TrueFalseScoringStrategy implements ScoringStrategy {
+  + calculateScore(question: Object): Number
+}
+
+class FillInBlanksScoringStrategy implements ScoringStrategy {
+  + calculateScore(question: Object): Number
+}
+
+class EssayScoringStrategy implements ScoringStrategy {
+  + calculateScore(question: Object): Number
+}
+
+' 上下文类，使用评分策略接口
+class ExamScoringContext {
+  - strategy: ScoringStrategy
+  + setStrategy(strategy: ScoringStrategy)
+  + scoreQuestion(question: Object): Number
+}
+
+' 关联关系
+ExamScoringContext --> ScoringStrategy
+MultipleChoiceScoringStrategy ..> ScoringStrategy
+SingleChoiceScoringStrategy ..> ScoringStrategy
+TrueFalseScoringStrategy ..> ScoringStrategy
+FillInBlanksScoringStrategy ..> ScoringStrategy
+EssayScoringStrategy ..> ScoringStrategy
+
+@enduml

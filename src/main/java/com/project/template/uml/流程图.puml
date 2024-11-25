@@ -1,0 +1,52 @@
+@startuml
+start
+
+:用户登录系统;
+if (登录成功?) then (yes)
+  if (用户是学生?) then (yes)
+    :加载考试列表;
+    if (选择考试?) then (yes)
+      :加载考试题目;
+      :开始考试;
+      while (考试未结束)
+        :回答问题;
+        if (提交答案?) then (yes)
+          :计算得分;
+        endif
+      endwhile
+      :考试结束;
+      :显示得分和结果;
+    else (no)
+      :退出系统;
+    endif
+  else (no)
+    if (用户是老师?) then (yes)
+      :加载考试管理界面;
+      if (创建或编辑考试?) then (yes)
+        :加载题目库;
+        :创建或编辑考试;
+      else (no)
+        if (查看学生成绩?) then (yes)
+          :加载学生成绩列表;
+        else (no)
+          :退出系统;
+        endif
+      endif
+    else (no)
+      if (用户是管理员?) then (yes)
+        :加载系统管理界面;
+        if (管理用户或课程?) then (yes)
+          :执行用户或考试管理等操作;
+        else (no)
+          :退出系统;
+        endif
+      endif
+    endif
+  endif
+else (no)
+  :显示错误信息;
+  :退出系统;
+endif
+
+end
+@enduml

@@ -8,7 +8,7 @@
               <el-col :span="4" class="logo">
                 <div>
                   <router-link to="/front/index" tag="div">
-                    <img src="@/assets/logo.jpg" alt="">
+                    <img src="@/assets/logo1.jpg" alt="">
                   </router-link>
                 </div>
               </el-col>
@@ -53,7 +53,7 @@
       </div>
       <div class="container-fluid">
         <el-footer class="footer">
-          <p>@数据库课设</p>
+          <p>@软件设计体系结构</p>
         </el-footer>
       </div>
     </el-container>
@@ -107,6 +107,8 @@ export default {
 
 .container-fluid {
   width: 100%;
+  margin: 0 auto;
+
   /*background: #909399;*/
 }
 

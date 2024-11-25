@@ -12,9 +12,16 @@
 
       </el-form>
     </div>
-    <el-button type="primary" @click="handleAdd" icon="el-icon-circle-plus-outline">新 增</el-button>
+    <el-row type="flex" justify="space-between">
+      <el-col :span="4">
+        <el-button type="primary" @click="handleAdd" icon="el-icon-circle-plus-outline">新 增</el-button>
+        <el-button @click="batchDelete" :disabled="ids.length<=0" icon="el-icon-delete">批量删除</el-button>
+      </el-col>
+      <el-col :span="10">
 
-    <el-button @click="batchDelete" :disabled="ids.length<=0" icon="el-icon-delete">批量删除</el-button>
+      </el-col>
+
+    </el-row>
     <el-table
         ref="multipleTable"
         :data="listData"
@@ -60,6 +67,8 @@
         :page-sizes="[10, 20, 30, 40, 50, 100]"
         :total="total">
     </el-pagination>
+
+
 
     <el-drawer
         :title="formData.id?'编辑':'新增'"
@@ -144,6 +153,7 @@
         </el-form>
         <div class="demo-drawer__footer" style="display: flex;justify-content: space-around">
           <el-button @click="isDrawerDialog=false" icon="el-icon-close">取 消</el-button>
+          <el-button  icon="el-icon-cloudy" @click="autoAdd">自动生成</el-button>
           <el-button type="primary" @click="submit" icon="el-icon-upload">提 交</el-button>
         </div>
       </div>
@@ -163,6 +173,7 @@ export default {
       }],
       formData: {},
       isDrawerDialog: false,
+      isDrawerDialog1: false,
       pageInfo: {
         //当前页
         pageNum: 1,
@@ -215,6 +226,22 @@ export default {
     handleAdd() {
       this.formData = {}
       this.isDrawerDialog = true
+    },
+    autoAdd() {
+      this.$axios.post("/exam/autoAdd").then(res => {
+        if (res.status === 200) {
+          this.$message({
+            message: 'success',
+            type: "success"
+          })
+
+        }
+        // 处理返回的题号
+        let questionIds = res;
+        //刷新表单的内容
+        this.formData.question = questionIds;
+        console.log("Selected question IDs:", res[0]);
+      })
     },
     submit() {
       this.formData.question = this.formData.question.join(",")

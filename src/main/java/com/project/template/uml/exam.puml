@@ -1,0 +1,33 @@
+@startuml
+
+' 定义组件接口
+interface ExamService {
+  + submitExam(exam: Exam)
+}
+
+' 定义具体组件
+class ExamServiceImpl implements ExamService {
+  + submitExam(exam: Exam)
+}
+
+' 定义抽象装饰器类
+abstract class ExamServiceDecorator implements ExamService {
+  - examService: ExamService
+  + ExamServiceDecorator(examService: ExamService)
+  + submitExam(exam: Exam)
+}
+
+' 定义具体装饰器类
+class LoggingExamServiceDecorator extends ExamServiceDecorator {
+  + submitExam(exam: Exam)
+}
+
+class EncryptionExamServiceDecorator extends ExamServiceDecorator {
+  + submitExam(exam: Exam)
+}
+
+' 关联关系
+ExamServiceDecorator o--> ExamService
+
+
+@enduml

@@ -13,6 +13,7 @@ import com.project.template.service.ScoreService;
 import com.project.template.utils.UserThreadLocal;
 import com.project.template.utils.Utils;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -83,4 +84,10 @@ public class ExamController {
         return new Result().success();
     }
 
+//    @PostMapping("/autoAdd")
+//    public ResponseEntity<?> autoAdd(){
+//        //自动生成试卷
+//        List<String> questionIds=examService.autoAdd();
+//        return ResponseEntity.ok(questionIds);
+//    }
 }

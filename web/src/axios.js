@@ -23,7 +23,7 @@ request.interceptors.request.use(config=>{
 request.interceptors.response.use(
     response =>{
         let res = response.data
-        if(res.code === 200){
+        if(res.code === 200||response.status===200){
             return response.data
 
         }else{
