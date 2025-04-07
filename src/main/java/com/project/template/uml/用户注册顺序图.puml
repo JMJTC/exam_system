@@ -1,0 +1,43 @@
+@startuml
+actor 用户
+participant "前端页面" as Frontend
+participant "SysUserController" as Controller
+participant "SysUserService" as Service
+participant "SysUserMapper" as Mapper
+participant "数据库" as DB
+
+用户 -> Frontend: 输入注册信息并提交
+Frontend -> Controller: POST /sysUser/register
+activate Controller
+Controller -> Service: register(userRegisterDTO)
+activate Service
+Service -> Mapper: selectOne(wrapper)
+activate Mapper
+Mapper -> DB: 查询用户信息
+activate DB
+DB --> Mapper: 返回查询结果
+deactivate DB
+Mapper --> Service: 返回用户信息
+deactivate Mapper
+alt 用户名称重复
+    Service -> Service: 抛出CustomException("用户名称重复")
+    Service --> Controller: 异常信息
+    Controller --> Frontend: 返回错误响应
+    deactivate Controller
+    deactivate Service
+else 用户名称不重复
+    Service -> Service: 生成盐值、加密密码等操作
+    Service -> Mapper: saveOrUpdate(user)
+    activate Mapper
+    Mapper -> DB: 插入或更新用户信息
+    activate DB
+    DB --> Mapper: 操作结果
+    deactivate DB
+    Mapper --> Service: 操作结果
+    deactivate Mapper
+    Service --> Controller: 注册成功
+    deactivate Service
+    Controller --> Frontend: 返回成功响应
+    deactivate Controller
+
+@enduml

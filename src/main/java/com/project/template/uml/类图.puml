@@ -1,0 +1,125 @@
+@startuml
+' 实体类
+class SysUser {
+}
+
+class Exam {
+
+}
+
+class Notice {
+
+}
+
+
+' 控制器类
+class SysUserController {
+
+}
+
+class ExamController {
+
+}
+
+class NoticeController {
+
+}
+
+
+
+' 服务接口类
+interface SysUserService {
+
+}
+
+interface ExamService {
+
+}
+
+interface NoticeService {
+
+}
+
+
+
+interface ScoreService {
+}
+
+' 服务实现类
+class SysUserServiceImpl  {
+}
+
+class ExamServiceImpl  {
+
+}
+
+class NoticeServiceImpl  {
+
+}
+
+
+
+class ScoreServiceImpl  {
+}
+
+' Mapper 类
+interface SysUserMapper {
+
+}
+
+interface ExamMapper {
+
+}
+
+interface NoticeMapper {
+
+}
+
+
+
+interface ScoreMapper {
+
+}
+
+
+
+
+class RoleMenuUtils {
+
+}
+
+class JwtUtils {
+}
+
+class Utils {
+    static salt()
+    static getUser()
+}
+
+' 关联关系
+SysUserController --> SysUserService : 使用
+ExamController --> ExamService : 使用
+ExamController --> ScoreService : 使用
+NoticeController --> NoticeService : 使用
+SysUserService <|.. SysUserServiceImpl : 实现
+ExamService <|.. ExamServiceImpl : 实现
+NoticeService <|.. NoticeServiceImpl : 实现
+ScoreService <|.. ScoreServiceImpl : 实现
+SysUserServiceImpl --> SysUserMapper : 使用
+ExamServiceImpl --> ExamMapper : 使用
+NoticeServiceImpl --> NoticeMapper : 使用
+ScoreServiceImpl --> ScoreMapper : 使用
+Exam --> SysUser : 关联
+Notice --> SysUser : 关联
+SysUserServiceImpl --> RoleMenuUtils : 使用
+SysUserServiceImpl --> JwtUtils : 使用
+SysUserServiceImpl --> Utils : 使用
+ScoreServiceImpl --> SysUserService : 使用
+
+' Mapper 与实体类关联
+SysUserMapper --> SysUser : 操作
+ExamMapper --> Exam : 操作
+NoticeMapper --> Notice : 操作
+ScoreMapper --> Score : 操作
+
+@enduml

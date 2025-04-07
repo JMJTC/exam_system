@@ -1,0 +1,81 @@
+@startuml
+package "com.project.examsystem" {
+    package "controller" {
+        [SysUserController]
+        [ExamController]
+        [ScoreController]
+        [SysRoleController]
+        [NoticeController]
+        [BannerController]
+        [NewsController]
+    }
+    package "service" {
+        [SysUserService]
+        [ExamService]
+        [ScoreService]
+        [SysRoleService]
+        [NoticeService]
+        [BannerService]
+        [NewsService]
+    }
+    package "entity" {
+        [SysUser]
+        [Exam]
+        [ExamQuestion]
+        [Score]
+        [SysRole]
+        [Notice]
+        [Banner]
+        [News]
+    }
+    package "dto" {
+        [SysUserDTO]
+        [UserLoginDTO]
+        [UserRegisterDTO]
+    }
+    package "utils" {
+        [UserThreadLocal]
+        [NoScoreDeleteStrategy]
+        [HasScoreDeleteStrategy]
+    }
+    package "config" {
+        [CorsConfig]
+    }
+    package "common" {
+        [ProductionDecision]
+    }
+}
+
+[SysUserController] --> [SysUserService]
+[ExamController] --> [ExamService]
+[ScoreController] --> [ScoreService]
+[SysRoleController] --> [SysRoleService]
+[NoticeController] --> [NoticeService]
+[BannerController] --> [BannerService]
+[NewsController] --> [NewsService]
+
+[SysUserService] --> [SysUser]
+[ExamService] --> [Exam]
+[ScoreService] --> [Score]
+[SysRoleService] --> [SysRole]
+[NoticeService] --> [Notice]
+[BannerService] --> [Banner]
+[NewsService] --> [News]
+
+[SysUserController] --> [SysUserDTO]
+[SysUserController] --> [UserLoginDTO]
+[SysUserController] --> [UserRegisterDTO]
+
+[SysUserService] --> [UserThreadLocal]
+[ExamService] --> [NoScoreDeleteStrategy]
+[ExamService] --> [HasScoreDeleteStrategy]
+
+[CorsConfig] --> [SysUserController]
+[CorsConfig] --> [ExamController]
+[CorsConfig] --> [ScoreController]
+[CorsConfig] --> [SysRoleController]
+[CorsConfig] --> [NoticeController]
+[CorsConfig] --> [BannerController]
+[CorsConfig] --> [NewsController]
+
+@enduml

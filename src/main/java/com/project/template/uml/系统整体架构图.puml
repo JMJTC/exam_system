@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+
+actor 用户 as User
+
+rectangle 在线考试系统 {
+    component 表现层 as PresentationLayer
+    component 业务逻辑层 as BusinessLogicLayer
+    component 数据访问层 as DataAccessLayer
+    database 数据层 as DataLayer
+}
+
+User --> PresentationLayer : 交互
+PresentationLayer --> BusinessLogicLayer : 调用业务逻辑
+BusinessLogicLayer --> DataAccessLayer : 访问数据
+DataAccessLayer --> DataLayer : 读写数据
+DataLayer --> DataAccessLayer : 返回数据
+DataAccessLayer --> BusinessLogicLayer : 返回数据
+BusinessLogicLayer --> PresentationLayer : 返回结果
+PresentationLayer --> User : 显示结果
+@enduml

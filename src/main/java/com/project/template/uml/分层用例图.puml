@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+actor Teacher
+actor Student
+
+rectangle "在线考试系统" {
+    usecase "用户注册" as UC1
+    usecase "用户登录" as UC2
+    usecase "修改密码" as UC3
+    usecase "重置密码" as UC4
+    usecase "发布考试" as UC5
+    usecase "编辑考试信息" as UC6
+    usecase "删除考试" as UC7
+    usecase "查看考试列表" as UC8
+    usecase "参加考试" as UC9
+    usecase "添加试题" as UC10
+    usecase "编辑试题" as UC11
+    usecase "删除试题" as UC12
+    usecase "查看学生成绩" as UC13
+    usecase "查看自己成绩" as UC14
+
+    Teacher -- UC5
+    Teacher -- UC6
+    Teacher -- UC7
+    Teacher -- UC10
+    Teacher -- UC11
+    Teacher -- UC12
+    Teacher -- UC13
+    Student -- UC8
+    Student -- UC9
+    Student -- UC14
+    Teacher -- UC1
+    Teacher -- UC2
+    Teacher -- UC3
+    Teacher -- UC4
+    Student -- UC1
+    Student -- UC2
+    Student -- UC3
+    Student -- UC4
+}
+@enduml

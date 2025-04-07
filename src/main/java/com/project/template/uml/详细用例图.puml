@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor 管理员 as Admin
+actor 教师 as Teacher
+actor 学生 as Student
+
+rectangle 考试管理 {
+    usecase 创建考试 as UC21
+    usecase 编辑考试 as UC22
+    usecase 发布考试 as UC23
+    usecase 参加考试 as UC24
+    usecase 管理考试 as UC25
+}
+
+Teacher --> UC21 : 执行
+Teacher --> UC22 : 执行
+Teacher --> UC23 : 执行
+
+Student --> UC24 : 执行
+
+Admin --> UC25 : 执行
+@enduml

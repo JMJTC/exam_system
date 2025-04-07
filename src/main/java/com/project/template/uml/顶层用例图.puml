@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+actor 管理员 as Admin
+actor 教师 as Teacher
+actor 学生 as Student
+
+rectangle 在线考试系统 {
+    usecase 用户管理 as UC1
+    usecase 考试管理 as UC2
+    usecase 题目管理 as UC3
+    usecase 成绩管理 as UC4
+}
+
+Admin --> UC1 : 管理
+Admin --> UC2 : 管理
+Admin --> UC3 : 管理
+Admin --> UC4 : 查看
+
+Teacher --> UC2 : 创建、编辑
+Teacher --> UC3 : 创建、编辑
+Teacher --> UC4 : 查看、统计
+
+Student --> UC2 : 参加考试
+Student --> UC4 : 查看成绩
+@enduml

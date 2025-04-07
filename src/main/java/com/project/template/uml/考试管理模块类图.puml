@@ -1,0 +1,33 @@
+@startuml
+class ExamController {
+    + list() : Result<List<Exam>>
+    + findPage(query: Map<String, Object>, pageNum: Integer, pageSize: Integer) : Result<PageVO<Exam>>
+    + add(exam: Exam) : Result
+    + updateById(exam: Exam) : Result
+    + delBatch(ids: List<Integer>) : Result
+}
+
+interface ExamService {
+    + list() : List<Exam>
+    + page(query: Map<String, Object>, pageNum: Integer, pageSize: Integer) : Page<Exam>
+    + save(exam: Exam) : boolean
+    + updateById(exam: Exam) : boolean
+    + removeByIds(ids: List<Integer>) : boolean
+}
+
+class ExamServiceImpl  {
+    + list() : List<Exam>
+    + page(query: Map<String, Object>, pageNum: Integer, pageSize: Integer) : Page<Exam>
+    + save(exam: Exam) : boolean
+    + updateById(exam: Exam) : boolean
+    + removeByIds(ids: List<Integer>) : boolean
+}
+
+interface ExamMapper extends BaseMapper<Exam> {
+    // 数据库操作方法
+}
+
+ExamController --> ExamService : 调用
+ExamService <|.. ExamServiceImpl : 实现
+ExamServiceImpl --> ExamMapper : 调用
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+actor 教师
+participant "前端页面" as Frontend
+participant "ExamController" as Controller
+participant "ExamService" as Service
+participant "ExamMapper" as Mapper
+participant "数据库" as DB
+
+教师 -> Frontend: 输入考试信息并提交
+Frontend -> Controller: POST /exam/add
+activate Controller
+Controller -> Service: save(exam)
+activate Service
+Service -> Mapper: insert(exam)
+activate Mapper
+Mapper -> DB: 插入考试信息
+activate DB
+DB --> Mapper: 操作结果
+deactivate DB
+Mapper --> Service: 操作结果
+deactivate Mapper
+Service --> Controller: 保存成功
+deactivate Service
+Controller --> Frontend: 返回成功响应
+deactivate Controller
+@enduml

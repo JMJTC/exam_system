@@ -1,0 +1,77 @@
+@startuml
+entity SysUser {
+    + id : int
+    --
+    username : varchar
+    password : varchar
+    email : varchar
+    mobile : varchar
+    address : varchar
+    gender : varchar
+    roleType : varchar
+    state : varchar
+}
+
+entity Exam {
+    + id : int
+    --
+    name : varchar
+    img : varchar
+    startTime : datetime
+    endTime : datetime
+    question : text
+    score : int
+    * userId : int
+}
+
+entity ExamQuestion {
+    + id : int
+    --
+    content : text
+    options : text
+    answer : varchar
+    questionType : varchar
+    difficultyLevel : varchar
+    * userId : int
+}
+
+entity Score {
+    + id : int
+    --
+    * examId : int
+    * userId : int
+    score : int
+    answerRecord : text
+}
+
+entity Notice {
+    + id : int
+    --
+    title : varchar
+    content : text
+    createTime : datetime
+    userId : int
+}
+
+entity Link {
+    + id : int
+    --
+    name : varchar
+    url : varchar
+    createTime : datetime
+}
+
+entity Banner {
+    + id : int
+    --
+    imgUrl : varchar
+    linkUrl : varchar
+    sortOrder : int
+}
+
+SysUser ||--o{ Exam : "创建"
+SysUser ||--o{ ExamQuestion : "创建"
+SysUser ||--o{ Score : "参加考试"
+SysUser ||--o{ Notice : "发布"
+Exam ||--o{ Score : "关联"
+@enduml
